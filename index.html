@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth" style="scroll-padding-top: 5rem;">
+<head>
+    <link rel="icon" type="image/png" href="input_file_1.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ares OS | Coming Soon</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crimson: { 950: '#0a0203', 900: '#140305', 800: '#2b0a11', 500: '#ff003c', 400: '#ff1a40' },
+                        platinum: { 100: '#F5F7FA', 300: '#BFC7D5' },
+                        discord: '#5865F2'
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'], mono: ['JetBrains Mono', 'monospace'] },
+                    boxShadow: { 'crimson-glow': '0 0 30px -5px rgba(255, 0, 60, 0.4)', 'crimson-intense': '0 0 50px -10px rgba(255, 0, 60, 0.7)' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0a0203; color: #F5F7FA; overflow-x: hidden; }
+        /* Custom scrollbar matching the theme */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0203; }
+        ::-webkit-scrollbar-thumb { background: #2b0a11; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff003c; }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #ff003c; border-radius: 2px; }
+
+        .glass-panel {
+            background: rgba(20, 3, 5, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 0, 60, 0.15);
+            box-shadow: inset 0 0 20px rgba(255, 0, 60, 0.05), 0 10px 30px rgba(0,0,0,0.5); transition: all 0.4s ease;
+        }
+        .glass-panel:hover { border-color: rgba(255, 0, 60, 0.4); box-shadow: inset 0 0 30px rgba(255, 0, 60, 0.1), 0 0 40px rgba(255, 0, 60, 0.2); }
+
+        .nav-link { position: relative; transition: color 0.3s ease; }
+        .nav-link::after { content: ''; position: absolute; width: 0%; height: 2px; bottom: -4px; left: 0; background-color: #ff003c; transition: width 0.3s ease; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link.active { color: #ff1a40; }
+
+        .logo-white { filter: brightness(0) invert(1); background: transparent; }
+
+        .mockup-container { perspective: 2000px; }
+        .mockup-window { transform: rotateX(5deg) rotateY(-10deg) rotateZ(2deg); transform-style: preserve-3d; transition: transform 0.5s ease; }
+        .mockup-container:hover .mockup-window { transform: rotateX(2deg) rotateY(-5deg) rotateZ(1deg) scale(1.02); }
+
+        .modal-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; backdrop-filter: blur(10px); z-index: 9999; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content { transform: scale(0.95) translateY(20px); opacity: 0; transition: all 0.4s ease; }
+        .modal-overlay.active .modal-content { transform: scale(1) translateY(0); opacity: 1; }
+
+        .lang-dropdown { opacity: 0; transform: translateY(-10px); pointer-events: none; transition: all 0.2s ease; }
+        .lang-dropdown.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    </style>
+</head>
+<body class="antialiased font-sans selection:bg-crimson-500 selection:text-white relative">
+
+    <canvas id="bg-canvas" class="fixed inset-0 z-0 pointer-events-none opacity-70"></canvas>
+    <div class="fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-crimson-900/30 via-crimson-950/80 to-crimson-950 pointer-events-none"></div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-4 left-0 right-0 z-50 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto glass-panel rounded-full px-6 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+                <img src="input_file_1.png" alt="Ares OS Logo" class="object-contain transition-transform group-hover:scale-110" style="max-height: 40px; width: auto; background: transparent;">
+                <span class="font-serif font-bold text-xl tracking-widest uppercase text-white transition-colors group-hover:text-crimson-400">Ares OS</span>
+            </a>
+
+            <!-- Links Desktop -->
+            <div class="hidden lg:flex items-center space-x-6 text-sm font-medium text-platinum-300">
+                <a href="#editions" class="nav-link" data-i18n="nav_editions">Edizioni</a>
+                <a href="#features" class="nav-link" data-i18n="nav_features">Caratteristiche</a>
+                <a href="#performance" class="nav-link" data-i18n="nav_performance">Prestazioni</a>
+                <a href="wallpapers.html" class="nav-link" data-i18n="nav_wallpapers">Sfondi</a>
+                <a href="#faq" class="nav-link" data-i18n="nav_faq">FAQ</a>
+            </div>
+
+            <div class="flex items-center gap-4 relative">
+                <button id="lang-btn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-platinum-300 hover:text-white transition-colors border border-white/10 px-4 py-2 rounded-full hover:bg-white/5">
+                    <i data-lucide="globe" class="w-4 h-4"></i> <span id="current-lang">IT</span>
+                </button>
+                <div id="lang-dropdown" class="lang-dropdown absolute top-full mt-2 left-0 w-36 glass-panel rounded-xl py-2 flex flex-col z-50">
+                    <button onclick="changeLanguage('it')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400 hover:bg-white/5">Italiano (IT)</button>
+                    <button onclick="changeLanguage('en')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400 hover:bg-white/5">English (EN)</button>
+                    <button onclick="changeLanguage('fr')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400 hover:bg-white/5">Français (FR)</button>
+                    <button onclick="changeLanguage('es')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400 hover:bg-white/5">Español (ES)</button>
+                    <button onclick="changeLanguage('de')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400 hover:bg-white/5">Deutsch (DE)</button>
+                    <button onclick="changeLanguage('ru')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400 hover:bg-white/5">Русский (RU)</button>
+                    <button onclick="changeLanguage('pt')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400 hover:bg-white/5">Português (PT)</button>
+                    <button onclick="changeLanguage('zh')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400 hover:bg-white/5">中文 (ZH)</button>
+                    <button onclick="changeLanguage('ja')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400 hover:bg-white/5">日本語 (JA)</button>
+                </div>
+                <!-- Navbar Disabled Button -->
+                <div class="px-6 py-2.5 rounded-full text-sm font-bold uppercase border border-crimson-500/30 bg-crimson-500/10 text-crimson-500/50 cursor-not-allowed flex items-center gap-2" title="Under Development">
+                    <i data-lucide="lock" class="w-4 h-4"></i> <span>Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="relative z-10 min-h-screen flex items-center justify-center pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8 text-center lg:text-left">
+                
+                <!-- NEW BADGES -->
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-500/50 bg-yellow-500/10 text-yellow-400 text-xs font-bold uppercase shadow-[0_0_15px_rgba(234,179,8,0.2)]">
+                        <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+                        <span>Work in Progress - Release TBA</span>
+                    </div>
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-crimson-500/30 bg-crimson-500/10 text-crimson-400 text-xs font-bold uppercase shadow-[0_0_15px_rgba(255,0,60,0.2)]">
+                        <span data-i18n="hero_badge">Basato su LTSC IoT</span>
+                    </div>
+                </div>
+
+                <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight text-white" data-i18n="hero_title">
+                    Prestazioni <span class="text-transparent bg-clip-text bg-gradient-to-r from-crimson-500 to-red-600 drop-shadow-[0_0_25px_rgba(255,0,60,0.6)]">Estreme</span>.<br>Zero Bloatware.
+                </h1>
+                <p class="text-lg md:text-xl text-platinum-300 font-light max-w-2xl mx-auto lg:mx-0" data-i18n="hero_subtitle">
+                    Il tuo PC ridotto all'essenziale. Progettato per gamer estremi e power user, con solo <span class="text-white font-bold border-b border-crimson-500">100-120 processi attivi</span> all'avvio.
+                </p>
+
+            <!-- DISCORD CTA (Replaced Download CTA) -->
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                    <button onclick="window.open('https://discord.com/', '_blank')" class="w-full sm:w-auto bg-discord hover:bg-[#4752C4] text-white px-8 py-4 rounded-full font-bold uppercase text-sm shadow-[0_0_20px_rgba(88,101,242,0.4)] hover:-translate-y-1 flex items-center justify-center gap-3 transition-all">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+                        </svg>
+                        <span data-i18n="btn_discord">Join Discord Community</span>
+                    </button>
+                    <button onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto bg-transparent border border-white/20 text-platinum-100 px-8 py-4 rounded-full font-bold uppercase text-sm hover:bg-white/5 transition-all flex items-center justify-center gap-3" data-i18n="btn_learn">Scopri di più</button>
+                    </button>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE TERMINAL MOCKUP -->
+            <div class="mockup-container hidden lg:block">
+                <div class="mockup-window glass-panel rounded-2xl w-full aspect-[4/3] p-4 relative overflow-hidden border-crimson-500/40 shadow-crimson-intense flex flex-col cursor-text">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4 shrink-0">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="text-xs font-mono text-platinum-300">ares_os_terminal.exe</div>
+                    </div>
+                    
+                    <div class="flex flex-col flex-grow relative z-10 pt-2">
+                        <!-- Updated Terminal Container -->
+                        <div class="w-full bg-black/80 rounded-lg p-4 border border-crimson-500/30 font-mono text-xs md:text-sm text-crimson-400 flex-grow shadow-inner text-left overflow-y-auto max-h-[350px] custom-scrollbar flex flex-col relative">
+                            <div id="terminal-output" class="whitespace-pre-line leading-relaxed"></div>
+                            
+                            <!-- Interactive Input -->
+                            <div class="mt-2 text-crimson-400 flex items-center">
+                                <span class="mr-2 font-bold text-white">ARES_OS></span>
+                                <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-white w-full font-mono focus:ring-0 text-sm" autocomplete="off" placeholder="Select [1-7]...">
+                                <span class="inline-block w-2 h-4 bg-crimson-500 animate-pulse ml-1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDIZIONI -->
+    <section id="editions" class="relative z-10 py-24 px-4 bg-black/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4" data-i18n="ed_title">Scegli il tuo OS.</h2>
+                <p class="text-platinum-300 max-w-2xl mx-auto" data-i18n="ed_sub">Due varianti basate esclusivamente su branch LTSC IoT.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- W10 -->
+                <div class="glass-panel p-8 rounded-3xl relative overflow-hidden">
+                    <div class="flex justify-between mb-8">
+                        <div>
+                            <h3 class="text-3xl font-serif font-bold text-white mb-2">Ares OS 10</h3>
+                            <p class="font-mono text-sm text-blue-400 font-bold bg-blue-400/10 px-3 py-1 rounded-md inline-block">21H2 LTSC IoT</p>
+                        </div>
+                        <i data-lucide="shield-check" class="w-10 h-10 text-blue-500 opacity-50"></i>
+                    </div>
+                    <ul class="space-y-4 mb-10 text-platinum-300 font-light">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-crimson-500"></i> <span data-i18n="w10_feat1">Massima stabilità e compatibilità.</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-crimson-500"></i> <span data-i18n="w10_feat2">Perfetto per hardware datato o eSports.</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-crimson-500"></i> <span data-i18n="w10_feat3">Latenza assoluta più bassa (DPC).</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-crimson-500"></i> <span data-i18n="w10_feat4">Supporto di sicurezza esteso (2032).</span></li>
+                    </ul>
+                    <!-- DISABLED BUTTON -->
+                    <div class="w-full py-4 text-center rounded-xl bg-black/40 border border-white/10 text-white/40 font-bold cursor-not-allowed flex items-center justify-center gap-2">
+                        <i data-lucide="lock" class="w-5 h-5"></i> <span data-i18n="btn_coming_soon">Download Unavailable - Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- W11 -->
+                <div class="glass-panel p-8 rounded-3xl relative overflow-hidden">
+                    <div class="flex justify-between mb-8">
+                        <div>
+                            <h3 class="text-3xl font-serif font-bold text-white mb-2">Ares OS 11</h3>
+                            <p class="font-mono text-sm text-crimson-400 font-bold bg-crimson-400/10 px-3 py-1 rounded-md inline-block">24H2 LTSC IoT</p>
+                        </div>
+                        <i data-lucide="cpu" class="w-10 h-10 text-crimson-500 opacity-50"></i>
+                    </div>
+                    <ul class="space-y-4 mb-10 text-platinum-300 font-light">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-crimson-500"></i> <span data-i18n="w11_feat1">Scheduler avanzato per CPU ibride.</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-crimson-500"></i> <span data-i18n="w11_feat2">Core moderno, supporto API/DirectX 12.</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-crimson-500"></i> <span data-i18n="w11_feat3">Nessun bloatware nativo, UI alleggerita.</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-crimson-500"></i> <span data-i18n="w11_feat4">Gestione RAM ottimizzata.</span></li>
+                    </ul>
+                    <!-- DISABLED BUTTON -->
+                    <div class="w-full py-4 text-center rounded-xl bg-black/40 border border-white/10 text-white/40 font-bold cursor-not-allowed flex items-center justify-center gap-2">
+                        <i data-lucide="lock" class="w-5 h-5"></i> <span data-i18n="btn_coming_soon">Download Unavailable - Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CARATTERISTICHE -->
+    <section id="features" class="relative z-10 py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4" data-i18n="feat_title">Perché Ares OS?</h2>
+                <div class="w-24 h-1 bg-crimson-500 mx-auto rounded-full shadow-crimson-glow"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-crimson-500/10 rounded-xl flex items-center justify-center mb-6 text-crimson-400"><i data-lucide="scissors"></i></div>
+                    <h4 class="text-xl font-bold text-white mb-3" data-i18n="feat1_t">Processo Stripping</h4>
+                    <p class="text-sm text-platinum-300 font-light" data-i18n="feat1_d">Riduzione a soli 100-120 processi attivi.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-crimson-500/10 rounded-xl flex items-center justify-center mb-6 text-crimson-400"><i data-lucide="trash-2"></i></div>
+                    <h4 class="text-xl font-bold text-white mb-3" data-i18n="feat2_t">Zero Bloatware</h4>
+                    <p class="text-sm text-platinum-300 font-light" data-i18n="feat2_d">Rimozione totale app preinstallate.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-crimson-500/10 rounded-xl flex items-center justify-center mb-6 text-crimson-400"><i data-lucide="anchor"></i></div>
+                    <h4 class="text-xl font-bold text-white mb-3" data-i18n="feat3_t">Base IoT LTSC</h4>
+                    <p class="text-sm text-platinum-300 font-light" data-i18n="feat3_d">Costruito per durare, stabilità server.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-crimson-500/10 rounded-xl flex items-center justify-center mb-6 text-crimson-400"><i data-lucide="mouse-pointer-click"></i></div>
+                    <h4 class="text-xl font-bold text-white mb-3" data-i18n="feat4_t">Latenza Minimizzata</h4>
+                    <p class="text-sm text-platinum-300 font-light" data-i18n="feat4_d">Tweaks per abbattere l'input lag nei giochi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRESTAZIONI -->
+    <section id="performance" class="relative z-10 py-24 px-4 bg-gradient-to-b from-transparent via-crimson-900/10 to-transparent">
+        <div class="max-w-7xl mx-auto">
+            <div class="glass-panel p-10 md:p-16 rounded-[2.5rem] relative overflow-hidden border-crimson-500/40 shadow-crimson-intense">
+                <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6" data-i18n="perf_title">Numeri che<br><span class="text-crimson-500">Contano</span>.</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between text-sm font-bold mb-2"><span class="text-white" data-i18n="perf_ram">Consumo RAM</span><span class="text-crimson-400 font-mono">1.2 GB vs 4.5 GB</span></div>
+                                <div class="w-full bg-black/50 rounded-full h-2"><div class="bg-crimson-500 h-2 rounded-full w-[25%] relative"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm font-bold mb-2"><span class="text-white" data-i18n="perf_stab">Stabilità del sistema</span><span class="text-crimson-400 font-mono" data-i18n="perf_dpc">+50%</span></div>
+                                <div class="w-full bg-black/50 rounded-full h-2"><div class="bg-crimson-500 h-2 rounded-full w-[60%] relative"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4" id="counter-section">
+                        <div class="bg-black/40 border border-white/10 rounded-2xl p-6 text-center">
+                            <i data-lucide="activity" class="w-8 h-8 text-crimson-500 mx-auto mb-2"></i>
+                            <div class="text-4xl font-mono font-bold text-white counter" data-target="112">0</div>
+                            <div class="text-xs text-platinum-300 uppercase mt-1" data-i18n="stat1">Processi Attivi</div>
+                        </div>
+                        <div class="bg-black/40 border border-white/10 rounded-2xl p-6 text-center">
+                            <i data-lucide="zap" class="w-8 h-8 text-crimson-500 mx-auto mb-2"></i>
+                            <div class="text-4xl font-mono font-bold text-white counter" data-target="100">0</div>
+                            <div class="text-xs text-platinum-300 uppercase mt-1" data-i18n="stat2">Bloatware Rimosso</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="relative z-10 py-24 px-4">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-center font-serif text-3xl md:text-5xl font-bold text-white mb-10">FAQ</h2>
+            <div class="space-y-4">
+                <div class="glass-panel rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFaq(this)">
+                        <span class="font-bold text-white" data-i18n="faq1_q">I giochi con Anti-Cheat funzionano?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-crimson-500 transition-transform"></i>
+                    </button>
+                    <div class="px-6 pb-5 text-sm text-platinum-300 hidden" data-i18n="faq1_a">Sì. Ares OS preserva l'integrità del kernel Microsoft e i requisiti di firma dei driver. 
+                        Tutti i principali sistemi anti-cheat (compresi quelli a livello di kernel come Valorant Vanguard o EAC) funzionano regolarmente senza falsi positivi o blocchi.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 border-t border-white/5 bg-black/80 pt-16 pb-8 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="input_file_1.png" alt="Ares Logo" style="max-height: 30px; width: auto; background: transparent;">
+                    <span class="font-serif font-bold text-xl uppercase tracking-widest text-white">Ares OS</span>
+                </div>
+                <p class="text-xs text-platinum-300" data-i18n="foot_desc">OS modificato per prestazioni estreme.</p>
+            </div>
+         <div>
+    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-4" data-i18n="foot_comm">Community</h4>
+    <div class="space-y-3">
+        <!-- Discord -->
+        <button onclick="window.open('https://discord.com/', '_blank')" class="flex items-center gap-3 text-sm text-platinum-300 hover:text-crimson-400 transition-colors">
+            <img src="https://cdn.simpleicons.org/discord/ff003c" alt="Discord" class="w-5 h-5">
+            <span>Discord</span>
+        </button>
+        <!-- GitHub -->
+        <button onclick="window.open('https://github.com/Eddyx12/AresOS', '_blank')" class="flex items-center gap-3 text-sm text-platinum-300 hover:text-crimson-400 transition-colors">
+            <img src="https://cdn.simpleicons.org/github/ff003c" alt="GitHub" class="w-5 h-5">
+            <span>GitHub</span>
+        </button>
+    </div>
+</div>
+
+<!-- Colonna 2: LEGALE (Lucide / Standard) -->
+<div>
+    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-4" data-i18n="foot_leg">Legale</h4>
+    <div class="space-y-3">
+        <button onclick="openLegalModal('privacy')" class="flex items-center gap-3 text-sm text-platinum-300 hover:text-white transition-colors">
+            <i data-lucide="shield" class="w-5 h-5 text-crimson-500"></i>
+            <span data-i18n="foot_privacy">Privacy Policy</span>
+        </button>
+        <button onclick="openLegalModal('disclaimer')" class="flex items-center gap-3 text-sm text-platinum-300 hover:text-white transition-colors">
+            <i data-lucide="file-text" class="w-5 h-5 text-crimson-500"></i>
+            <span data-i18n="foot_disclaimer">Disclaimer Legale</span>
+        </button>
+        <a href="wallpapers.html" class="flex items-center gap-3 text-sm text-platinum-300 hover:text-white transition-colors" data-i18n="nav_wallpapers">
+            <i data-lucide="image" class="w-5 h-5 text-crimson-500"></i>
+            <span data-i18n="foot_wallpapers">Sfondi</span>
+        </a>
+    </div>
+</div>
+    </footer>
+
+    <!-- MODALS -->
+    <div id="download-modal" class="modal-overlay fixed inset-0 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80" onclick="closeModal('download-modal')"></div>
+        <div class="modal-content relative glass-panel w-full max-w-2xl rounded-2xl p-8 border border-crimson-500/50 bg-[#0a0203]">
+            <button onclick="closeModal('download-modal')" class="absolute top-4 right-4 text-white"><i data-lucide="x"></i></button>
+            <h3 id="dl-title" class="text-3xl font-serif font-bold text-white mb-2">Download</h3>
+            <p id="dl-subtitle" class="text-crimson-400 font-mono text-sm mb-6">LTSC IoT</p>
+            <div class="bg-black/50 border border-white/10 rounded-xl p-4 mb-6">
+                <h4 class="text-xs font-bold text-platinum-300 mb-2">SHA-256</h4>
+                <code id="dl-hash" class="text-xs text-green-400 break-all select-all font-mono block">...</code>
+            </div>
+            <button id="dl-action-btn" class="w-full bg-gradient-to-r from-crimson-500 to-crimson-400 text-white px-8 py-4 rounded-xl font-bold uppercase shadow-crimson-glow flex justify-center gap-3"><i data-lucide="download"></i> Download ISO</button>
+        </div>
+    </div>
+
+    <div id="legal-modal" class="modal-overlay fixed inset-0 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80" onclick="closeModal('legal-modal')"></div>
+        <div class="modal-content relative glass-panel w-full max-w-3xl p-6 bg-[#0a0203] flex flex-col max-h-[80vh]">
+            <div class="flex justify-between border-b border-white/10 pb-4 mb-4"><h3 id="legal-title" class="text-2xl font-serif font-bold text-white">Title</h3><button onclick="closeModal('legal-modal')" class="text-white"><i data-lucide="x"></i></button></div>
+            <div class="overflow-y-auto text-sm text-platinum-300" id="legal-text"></div>
+        </div>
+    </div>
+
+    <!-- Scripts Inclusions -->
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/terminal.js"></script>
+    <script src="js/three-bg.js"></script>
+</body>
+</html>

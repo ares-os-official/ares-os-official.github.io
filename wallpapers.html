@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ares Wallpapers | Sfondi 4K</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    
+    <script>
+        tailwind.config = { theme: { extend: { colors: { crimson: { 950: '#0a0203', 900: '#140305', 800: '#2b0a11', 500: '#ff003c', 400: '#ff1a40' }, platinum: { 300: '#BFC7D5' } }, fontFamily: { sans: ['Inter'], serif: ['Playfair Display'] } } } }
+    </script>
+    <style>
+        body { background-color: #0a0203; color: #fff; overflow-x: hidden; }
+        .glass-panel { background: rgba(20, 3, 5, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 0, 60, 0.15); box-shadow: inset 0 0 20px rgba(255, 0, 60, 0.05); }
+        .nav-link:hover { color: #ff1a40; }
+        
+        .modal-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index:9999; backdrop-filter: blur(10px); }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content { transform: scale(0.95); opacity: 0; transition: all 0.3s; }
+        .modal-overlay.active .modal-content { transform: scale(1); opacity: 1; }
+        .lang-dropdown { opacity: 0; pointer-events: none; } .lang-dropdown.active { opacity: 1; pointer-events: auto; }
+        
+        .wallpaper-card .overlay { opacity: 0; transition: opacity 0.3s; }
+        .wallpaper-card:hover .overlay { opacity: 1; }
+        .wallpaper-card img { transition: transform 0.5s; }
+        .wallpaper-card:hover img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <canvas id="bg-canvas" class="fixed inset-0 z-0 pointer-events-none opacity-70"></canvas>
+    <div class="fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-crimson-900/30 via-crimson-950/80 to-crimson-950 pointer-events-none"></div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-4 left-0 right-0 z-50 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto glass-panel rounded-full px-6 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="input_file_1.png" alt="Ares OS Logo" style="max-height: 40px; width: auto; background: transparent;">
+                <span class="font-serif font-bold text-xl uppercase text-white">Ares OS</span>
+            </a>
+            <div class="hidden lg:flex space-x-6 text-sm text-platinum-300">
+                <a href="index.html#editions" class="nav-link" data-i18n="nav_editions">Edizioni</a>
+                <a href="index.html#features" class="nav-link" data-i18n="nav_features">Caratteristiche</a>
+                <a href="index.html#performance" class="nav-link" data-i18n="nav_performance">Prestazioni</a>
+                <a href="wallpapers.html" class="nav-link text-crimson-400" data-i18n="nav_wallpapers">Sfondi</a>
+            </div>
+            
+            <div class="flex items-center gap-4 relative">
+                <button id="lang-btn" class="flex items-center gap-2 text-xs font-bold text-platinum-300 border border-white/10 px-4 py-2 rounded-full">
+                    <i data-lucide="globe" class="w-4 h-4"></i> <span id="current-lang">IT</span>
+                </button>
+                <div id="lang-dropdown" class="lang-dropdown absolute top-full mt-2 left-0 w-36 glass-panel rounded-xl py-2 flex flex-col z-50">
+                    <button onclick="changeLanguage('it')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400">Italiano</button>
+                    <button onclick="changeLanguage('en')" class="text-left px-4 py-2 text-sm text-platinum-300 hover:text-crimson-400">English</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- GALLERIA SFONDI LIMITATA A 2 -->
+    <section class="relative z-10 pt-32 pb-24 px-4 min-h-screen">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h1 class="font-serif text-4xl md:text-6xl font-bold text-white mb-4" data-i18n="wall_title">Ares Wallpapers</h1>
+                <p class="text-platinum-300 text-lg" data-i18n="wall_sub">Sfondi esclusivi per il tuo sistema LTSC.</p>
+            </div>
+            <!-- Modificato Layout per 2 soli sfondi centrati elegantemente -->
+            <div id="wallpaper-grid" class="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Modale Anteprima Sfondo -->
+    <div id="wallpaper-modal" class="modal-overlay fixed inset-0 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/95" onclick="closeModal('wallpaper-modal')"></div>
+        <div class="modal-content relative w-full max-w-5xl flex flex-col items-center">
+            <button onclick="closeModal('wallpaper-modal')" class="absolute -top-12 right-0 text-white"><i data-lucide="x" class="w-8 h-8"></i></button>
+            <img id="wp-preview-img" src="" alt="Preview" class="w-full rounded-lg border border-crimson-500/30 object-contain max-h-[70vh]">
+            <div class="mt-6 flex flex-col sm:flex-row justify-between w-full items-center gap-4">
+                <div>
+                    <h3 id="wp-preview-title" class="text-2xl font-serif font-bold text-white"></h3>
+                    <p id="wp-preview-res" class="text-crimson-400 font-mono text-sm"></p>
+                </div>
+                <a id="wp-download-btn" href="#" download class="bg-crimson-500 hover:bg-crimson-400 text-white px-8 py-3 rounded-full font-bold shadow-[0_0_20px_rgba(255,0,60,0.5)] flex items-center gap-2">
+                    <i data-lucide="download"></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/wallpapers.js"></script>
+    <script src="js/three-bg.js"></script>
+</body>
+</html>
