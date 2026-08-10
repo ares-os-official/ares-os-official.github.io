@@ -99,10 +99,10 @@ The following figures are presented on the [official ARES OS website](https://ar
 
 <div align="center">
 
-| Metric | ARES OS | Standard Windows |
-|---|---|---|
-| **RAM at startup** | 1.2 GB | 4.5 GB |
-| **System stability** | +90% | N/A |
+| Metric | ARES OS | ARES OS + Low-End Device | Standard Windows |
+|---|---|---|---|
+| **RAM at startup** | 1.2 GB | 900 MB | 4.5 GB |
+| **System stability** | +50% | N/A | N/A |
 
 </div>
 
@@ -186,7 +186,7 @@ Windows, DirectX, and related names are trademarks of Microsoft Corporation. Thi
 
 <div align="center">
 
-[**Eddyx12**](https://github.com/Eddyx12) — Eddyx12 ARES OS Founder and Developer & [**ildenteproibito**](https://github.com/ildenteproibito) — IL DENTE PROIBITO Tweaker by ARES OS
+[**Eddyx12**](https://github.com/Eddyx12) — Eddyx12 ARES OS Founder and Developer & [**ildenteproibito**](https://github.com/ildenteproibito) — IL DENTE PROIBITO Tweaker for ARES OS
 
 </div>
 
