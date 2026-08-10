@@ -1,8 +1,26 @@
 # Ares OS — Coming Soon
 
+<!-- Stylized split buttons modeled on your example: left label + right CTA -->
 <p>
-  <a href="https://discord.gg/ZFR22fshEZ" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:10px 18px;background:#5865F2;color:#fff;border-radius:6px;text-decoration:none;font-weight:600;">Join Discord Community</a>
-  <a href="https://ares-os-official.github.io/" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:10px 18px;margin-left:8px;background:#111;color:#fff;border-radius:6px;text-decoration:none;font-weight:600;">Official Website</a>
+  <a href="https://discord.gg/ZFR22fshEZ" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:stretch;text-decoration:none;border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,0.2);box-shadow:0 2px 8px rgba(0,0,0,0.25);">
+    <span style="display:inline-flex;align-items:center;gap:10px;padding:8px 12px;background:#2f3136;color:#ffffff;font-weight:700;font-size:13px;letter-spacing:1px;">
+      <img src="https://cdn.simpleicons.org/discord/ffffff" alt="Discord" style="width:18px;height:18px;display:inline-block;vertical-align:middle;">
+      DISCORD
+    </span>
+    <span style="display:inline-flex;align-items:center;padding:8px 20px;background:#6f7be3;color:#ffffff;font-weight:700;font-size:13px;letter-spacing:1px;">
+      JOIN OUR SERVER
+    </span>
+  </a>
+
+  <a href="https://ares-os-official.github.io/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:stretch;text-decoration:none;border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,0.2);box-shadow:0 2px 8px rgba(0,0,0,0.15);margin-left:12px;">
+    <span style="display:inline-flex;align-items:center;gap:10px;padding:8px 12px;background:#2f3136;color:#ffffff;font-weight:700;font-size:13px;letter-spacing:1px;">
+      <img src="https://cdn.simpleicons.org/internetexplorer/ffffff" alt="Website" style="width:18px;height:18px;display:inline-block;vertical-align:middle;">
+      WEBSITE
+    </span>
+    <span style="display:inline-flex;align-items:center;padding:8px 20px;background:#111827;color:#ffffff;font-weight:700;font-size:13px;letter-spacing:1px;">
+      VISIT SITE
+    </span>
+  </a>
 </p>
 
 Ares OS is a performance-focused, LTSC IoT-based operating system tailored for extreme gamers and power users. This project is a work in progress and the release is listed as "Coming Soon".
@@ -43,4 +61,3 @@ Note: The official site does not list precise minimum CPU, RAM, or storage numbe
 
 ## Downloads
 - The site currently marks downloads as "Unavailable — Coming Soon". Any SHA-256 or download artifacts on the site are placeholders or not yet published.
-- 
