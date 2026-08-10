@@ -1,4 +1,4 @@
-#                  Ares OS — Coming Soon
+# Ares OS — Coming Soon
 
 <!-- Stylized split buttons modeled on your example: left label + right CTA -->
 <p>
@@ -9,7 +9,12 @@
   </a>
 
   <a href="https://ares-os-official.github.io/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:stretch;text-decoration:none;border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,0.2);box-shadow:0 2px 8px rgba(0,0,0,0.15);margin-left:12px;">
-    <span style="display:inline-flex;align-items:center;gap:10px;padding:8px 12px;background:#2f3136;color:#ffffff;font-weight:700;font-size:13px;letter-spacing:1px;">
+  <span style="display:inline-flex;align-items:center;gap:10px;padding:8px 12px;background:#2f3136;color:#ffffff;font-weight:700;font-size:13px;letter-spacing:1px;">
+    <img src="https://placehold.co/24x24/ffffff/2f3136?text=A" alt="ARES Icon" width="24" height="24" style="border-radius: 4px;" />
+    ARES OS WEBSITE
+  </span>
+</a>
+
       <img src="https://cdn.simpleicons.org/internetexplorer/ffffff" alt="Website" style="width:18px;height:18px;display:inline-block;vertical-align:middle;">
       WEBSITE
     </span>
