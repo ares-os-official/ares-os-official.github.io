@@ -2,7 +2,7 @@
 
 <img src="https://ares-os-official.github.io/input_file_1.png" alt="Ares OS Logo" width="120">
 
-# Ares OS
+# ARES OS
 
 **Extreme Performance. Zero Bloatware.**
 
@@ -29,12 +29,12 @@ Built exclusively on Microsoft's LTSC IoT branches — stripped down to what mat
 
 > **Work in Progress — Release TBA**
 >
-> Ares OS is currently under active development. No downloads are available at this time.
+> ARES OS is currently under active development. No downloads are available at this time.
 > Follow the [official website](https://ares-os-official.github.io/) and join the [Discord server](https://discord.gg/ZFR22fshEZ) for release announcements.
 
 ---
 
-## What is Ares OS?
+## What is ARES OS?
 
 Ares OS is a modified Windows operating system built for maximum performance and zero bloatware. It runs at just **100–120 active processes at startup**, stripping everything non-essential from the system.
 
@@ -44,11 +44,11 @@ Built exclusively on Microsoft's LTSC IoT branches, Ares OS is designed for extr
 
 ## Editions
 
-Ares OS is offered in two editions, each based exclusively on an LTSC IoT branch.
+ARES OS is offered in two editions, each based exclusively on an LTSC IoT branch.
 
 ---
 
-### Ares OS 10 — 21H2 LTSC IoT
+### ARES OS 10 — 21H2 LTSC IoT
 
 - Maximum stability and compatibility
 - Ideal for older hardware and eSports scenarios
@@ -63,7 +63,7 @@ Ares OS is offered in two editions, each based exclusively on an LTSC IoT branch
 
 ---
 
-### Ares OS 11 — 24H2 LTSC IoT
+### ARES OS 11 — 24H2 LTSC IoT
 
 - Advanced scheduler for hybrid CPUs
 - Modern core with API and DirectX 12 support
@@ -112,7 +112,7 @@ The following figures are presented on the [official ARES OS website](https://ar
 
 ## Anti-Cheat Compatibility
 
-Ares OS preserves Microsoft kernel integrity and driver signature requirements.
+ARES OS preserves Microsoft kernel integrity and driver signature requirements.
 
 All major anti-cheat systems are reported to function correctly — including kernel-level solutions such as **Valorant Vanguard** and **Easy Anti-Cheat (EAC)** — without false positives or blocks.
 
@@ -124,7 +124,7 @@ All major anti-cheat systems are reported to function correctly — including ke
 
 **Downloads are not yet available.**
 
-Ares OS is still in active development. No ISO files have been released.
+ARES OS is still in active development. No ISO files have been released.
 
 Stay informed via the [official website](https://ares-os-official.github.io/) and the [Discord community](https://discord.gg/ZFR22fshEZ).
 
@@ -134,7 +134,7 @@ Stay informed via the [official website](https://ares-os-official.github.io/) an
 
 ## Wallpapers
 
-Official Ares OS 4K wallpapers are available on the website:
+Official ARES OS 4K wallpapers are available on the website:
 
 [**View Wallpapers →**](https://ares-os-official.github.io/wallpapers.html)
 
@@ -145,7 +145,7 @@ Official Ares OS 4K wallpapers are available on the website:
 <div align="center">
 
 <a href="https://discord.gg/ZFR22fshEZ">
-  <img src="https://img.shields.io/badge/Join%20the%20Ares%20OS%20Community-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Ares OS on Discord">
+  <img src="https://img.shields.io/badge/Join%20the%20Ares%20OS%20Community-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join ARES OS on Discord">
 </a>
 
 Join the Discord server for development updates, announcements, and community support.
@@ -168,7 +168,7 @@ Licensed under the **GNU General Public License v2.0**.
 
 ## Disclaimer
 
-Ares OS is an independent community project. It is not affiliated with, endorsed by, or sponsored by Microsoft Corporation.
+ARES OS is an independent community project. It is not affiliated with, endorsed by, or sponsored by Microsoft Corporation.
 
 Windows, DirectX, and related names are trademarks of Microsoft Corporation. This software is distributed as-is, without warranty of any kind. See the [GPL-2.0 License](./LICENSE) for full terms and conditions.
 
