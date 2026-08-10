@@ -131,7 +131,7 @@ Key features listed in the menu include:
 * **System Cleanup:** One-click optimization to clear temporary files and flush DNS cache.
 
 <div align="center">
-  <img src="images/arestool.png" alt="Ares OS Utility Toolbox Screenshot" width="800">
+  <img src="image/arestool.png" alt="Ares OS Utility Toolbox Screenshot" width="800">
 </div>
 
 ---
