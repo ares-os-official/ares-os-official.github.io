@@ -13,12 +13,6 @@
  </span>
 </a>
 
-      <img src="https://cdn.simpleicons.org/internetexplorer/ffffff" alt="Website" style="width:18px;height:18px;display:inline-block;vertical-align:middle;">
-      WEBSITE
-    </span>
-    <span style="display:inline-flex;align-items:center;padding:8px 20px;background:#111827;color:#ffffff;font-weight:700;font-size:13px;letter-spacing:1px;">
-      VISIT SITE
-    </span>
   </a>
 </p>
 
