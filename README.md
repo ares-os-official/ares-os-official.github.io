@@ -95,7 +95,7 @@ Ares OS is offered in two editions, each based exclusively on an LTSC IoT branch
 
 ## Performance
 
-The following figures are presented on the [official Ares OS website](https://ares-os-official.github.io/):
+The following figures are presented on the [official ARES OS website](https://ares-os-official.github.io/):
 
 <div align="center">
 
