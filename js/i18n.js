@@ -17,7 +17,8 @@ const dict = {
         faq1_q: "I giochi Anti-Cheat funzionano?", faq1_a: "Sì. Ares OS preserva l'integrità del kernel Microsoft e i requisiti di firma dei driver. Tutti i principali sistemi anti-cheat (compresi quelli a livello di kernel come Valorant Vanguard o EAC) funzionano regolarmente senza falsi positivi o blocchi.", faq2_q: "Riceverò aggiornamenti?", faq2_a: "Solo patch di sicurezza.",
         foot_desc: "OS modificato per prestazioni.", foot_comm: "Community", foot_leg: "Legale",
         foot_privacy: "Privacy",
-        foot_disclaimer: "Disclaimer Legale"
+        foot_disclaimer: "Disclaimer Legale",
+        foot_wallpapers: "Sfondi"
     },
     en: {
         nav_editions: "Editions", nav_features: "Features", nav_performance: "Performance", nav_wallpapers: "Wallpapers", nav_faq: "FAQ", nav_download: "Download",
@@ -37,6 +38,8 @@ const dict = {
         faq1_q: "Do Anti-Cheat games work?", faq1_a: "Yes. Ares OS preserves the integrity of the Microsoft kernel and driver signing requirements. All major anti-cheat systems (including kernel-level ones like Valorant Vanguard or EAC) work flawlessly without false positives or crashes.", faq2_q: "Will I get updates?", faq2_a: "Only security patches.",
         foot_desc: "Performance modified OS.", foot_comm: "Community", foot_leg: "Legal",
         foot_privacy: "Privacy",
+        foot_disclaimer: "Legal Disclaimer",
+        foot_wallpapers: "Wallpapers",
     },
     fr: {
         nav_editions: "Éditions", nav_features: "Fonctionnalités", nav_performance: "Performances", nav_wallpapers: "Fonds d'écran", nav_faq: "FAQ", nav_download: "Télécharger",
@@ -56,6 +59,8 @@ const dict = {
         faq1_q: "Les jeux avec Anti-Cheat fonctionnent-ils ?", faq1_a: "Oui. Ares OS préserve l'intégrité du noyau Microsoft et la signature obligatoire des pilotes. Tous les anti-cheats majeurs (y compris ceux au niveau noyau comme Valorant Vanguard ou EAC) fonctionnent parfaitement.", faq2_q: "Recevrai-je des mises à jour ?", faq2_a: "Uniquement les patchs de sécurité.",
         foot_desc: "OS optimisé pour la performance.", foot_comm: "Communauté", foot_leg: "Mentions Légales",
         foot_privacy: "Confidentialité",
+        foot_disclaimer: "Avertissement légal",
+        foot_wallpapers: "Papiers",
     },
     es: {
         nav_editions: "Ediciones", nav_features: "Características", nav_performance: "Rendimiento", nav_wallpapers: "Fondos de pantalla", nav_faq: "Preguntas frecuentes", nav_download: "Descargar",
@@ -75,6 +80,8 @@ const dict = {
         faq1_q: "¿Funcionan los juegos con Anti-Cheat?", faq1_a: "Sí. Ares OS conserva la integridad del kernel de Microsoft y los requisitos de firma de controladores. Todos los sistemas anti-cheat principales (incluyendo los de nivel kernel como Valorant Vanguard o EAC) funcionan perfectamente.", faq2_q: "¿Recibiré actualizaciones?", faq2_a: "Solo parches de seguridad.",
         foot_desc: "SO modificado para el rendimiento.", foot_comm: "Comunidad", foot_leg: "Aviso Legal",
         foot_privacy: "Privacidad",
+        foot_disclaimer: "Aviso legal",
+        foot_wallpapers: "Fondos de pantalla",
     },
     de: {
         nav_editions: "Editionen", nav_features: "Funktionen", nav_performance: "Leistung", nav_wallpapers: "Hintergrundbilder", nav_faq: "FAQ", nav_download: "Herunterladen",
@@ -94,6 +101,8 @@ const dict = {
         faq1_q: "Funktionieren Spiele mit Anti-Cheat?", faq1_a: "Ja. Ares OS bewahrt die Integrität des Microsoft-Kernels und die Treiber-Signierung. Alle gängigen Anti-Cheat-Systeme (einschließlich Kernel-Level wie Valorant Vanguard oder EAC) funktionieren einwandfrei.", faq2_q: "Erhalte ich Updates?", faq2_a: "Nur Sicherheitspatches.",
         foot_desc: "Leistungsoptimiertes Betriebssystem.", foot_comm: "Community", foot_leg: "Rechtliches",
         foot_privacy: "Privatsphäre",
+        foot_disclaimer: "Rechtlicher Haftungsausschluss",
+        foot_wallpapers: "Hintergrundbilder",
     },
     ru: {
         nav_editions: "Издания", nav_features: "Возможности", nav_performance: "Производительность", nav_wallpapers: "Обои", nav_faq: "FAQ", nav_download: "Скачать",
@@ -113,6 +122,8 @@ const dict = {
         faq1_q: "Работают ли игры с Anti-Cheat?", faq1_a: "Да. Ares OS сохраняет целостность ядра Microsoft и требования к подписи драйверов. Все основные античиты (включая уровни ядра, такие как Valorant Vanguard или EAC) работают без сбоев.", faq2_q: "Будут ли приходить обновления?", faq2_a: "Только патчи безопасности.",
         foot_desc: "ОС, модифицированная для максимальной скорости.", foot_comm: "Сообщество", foot_leg: "Правовая информация",
         foot_privacy: "Конфиденциальность",
+        foot_disclaimer: "Юридическое уведомление",
+        foot_wallpapers: "Обои",
     },
     pt: {
         nav_editions: "Edições", nav_features: "Recursos", nav_performance: "Desempenho", nav_wallpapers: "Papéis de Parede", nav_faq: "FAQ", nav_download: "Baixar",
@@ -132,6 +143,8 @@ const dict = {
         faq1_q: "Os jogos com Anti-Cheat funcionam?", faq1_a: "Sim. O Ares OS preserva a integridade do kernel da Microsoft e os requisitos de assinatura de drivers. Todos os principais sistemas anti-cheat (incluindo os de nível de kernel como Valorant Vanguard ou EAC) funcionam perfeitamente.", faq2_q: "Receberei atualizações?", faq2_a: "Apenas patches de segurança.",
         foot_desc: "SO modificado para alto desempenho.", foot_comm: "Comunidade", foot_leg: "Legal",
         foot_privacy: "Privacidade",
+        foot_disclaimer: "Aviso Legal",
+        foot_wallpapers: "Papéis de parede",
     },
     zh: {
         nav_editions: "版本", nav_features: "特性", nav_performance: "性能", nav_wallpapers: "壁纸", nav_faq: "常见问题", nav_download: "下载",
@@ -151,6 +164,8 @@ const dict = {
         faq1_q: "反作弊游戏可以正常运行吗？", faq1_a: "可以。Ares OS 完整保留了 Microsoft 内核完整性与驱动程序签名要求。所有主流反作弊系统（包括 Valorant Vanguard 或 EAC 等内核级反作弊）均可正常运行。", faq2_q: "我会收到系统更新吗？", faq2_a: "仅会收到安全补丁更新。",
         foot_desc: "专为极致性能打造的定制系统。", foot_comm: "社区", foot_leg: "法律声明",
         foot_privacy: "隐私",
+        foot_disclaimer: "法律免责声明",
+        foot_wallpapers: "壁纸",
     },
     ja: {
         nav_editions: "エディション", nav_features: "特徴", nav_performance: "パフォーマンス", nav_wallpapers: "壁紙", nav_faq: "FAQ", nav_download: "ダウンロード",
@@ -170,6 +185,8 @@ const dict = {
         faq1_q: "アンチチート導入ゲームは動作しますか？", faq1_a: "はい。Ares OS は Microsoft カーネルの整合性とドライバー署名要件を保持しています。Valorant Vanguard や EAC などのカーネルレベルを含むすべての主要アンチチートが正常に動作します。", faq2_q: "アップデートは配信されますか？", faq2_a: "セキュリティパッチのみ配信されます。",
         foot_desc: "パフォーマンスに特化したカスタムOS。", foot_comm: "コミュニティ", foot_leg: "法的情報",
         foot_privacy: "プライバシー",
+        foot_disclaimer: "法的免責事項",
+        foot_wallpapers: "壁紙",
     }
 };
 
