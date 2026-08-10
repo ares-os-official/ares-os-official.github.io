@@ -1,14 +1,10 @@
-# Ares OS — Coming Soon
+#                  Ares OS — Coming Soon
 
 <!-- Stylized split buttons modeled on your example: left label + right CTA -->
 <p>
-  <a href="https://discord.gg/ZFR22fshEZ" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:stretch;text-decoration:none;border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,0.2);box-shadow:0 2px 8px rgba(0,0,0,0.25);">
-    <span style="display:inline-flex;align-items:center;gap:10px;padding:8px 12px;background:#2f3136;color:#ffffff;font-weight:700;font-size:13px;letter-spacing:1px;">
-      <img src="https://cdn.simpleicons.org/discord/ffffff" alt="Discord" style="width:18px;height:18px;display:inline-block;vertical-align:middle;">
-      DISCORD
-    </span>
-    <span style="display:inline-flex;align-items:center;padding:8px 20px;background:#6f7be3;color:#ffffff;font-weight:700;font-size:13px;letter-spacing:1px;">
-      JOIN OUR SERVER
+  <a href="https://discord.gg/ZFR22fshEZ">
+  <img src="https://img.shields.io/badge/Discord-Join%20our%20Server-7289DA?style=for-the-badge&logo=discord&logoColor=white" alt="Join the ARES OS Discord Server" />
+</a>
     </span>
   </a>
 
