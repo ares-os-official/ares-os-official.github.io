@@ -102,7 +102,7 @@ The following figures are presented on the [official ARES OS website](https://ar
 | Metric | ARES OS | Standard Windows |
 |---|---|---|
 | **RAM at startup** | 1.2 GB | 4.5 GB |
-| **System stability** | +90% | N/A |
+| **System stability** | +90% | 30% |
 
 </div>
 
@@ -115,6 +115,10 @@ The following figures are presented on the [official ARES OS website](https://ar
 ARES OS preserves Microsoft kernel integrity and driver signature requirements.
 
 All major anti-cheat systems are reported to function correctly — including kernel-level solutions such as **Valorant Vanguard** and **Easy Anti-Cheat (EAC)** — without false positives or blocks.
+
+---
+
+## ARES OS Toolbox
 
 ---
 
