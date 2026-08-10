@@ -176,6 +176,12 @@ Windows, DirectX, and related names are trademarks of Microsoft Corporation. Thi
 
 <div align="center">
 
+[**Eddyx12**](https://github.com/Eddyx12) — Eddyx12, ARES OS Developer & [**ildenteproibito**](https://github.com/ildenteproibito) — IL DENTE PROIBITO Tweaker by ARES OS & [**Luke10-glitch**](https://github.com/Luke10-glitch) — Luke10-glitch Founder of ARES
+
+</div>
+
+<div align="center">
+
 [Website](https://ares-os-official.github.io/) &nbsp;•&nbsp; [Discord](https://discord.gg/ZFR22fshEZ) &nbsp;•&nbsp; [GitHub](https://github.com/ares-os-official/ares-os-official.github.io)
 
 </div>
