@@ -99,7 +99,7 @@ The following figures are presented on the [official ARES OS website](https://ar
 
 <div align="center">
 
-| Metric | Ares OS | Standard Windows |
+| Metric | ARES OS | Standard Windows |
 |---|---|---|
 | **RAM at startup** | 1.2 GB | 4.5 GB |
 | **System stability** | +50% | — |
