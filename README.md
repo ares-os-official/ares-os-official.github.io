@@ -120,6 +120,20 @@ All major anti-cheat systems are reported to function correctly — including ke
 
 ## ARES OS Toolbox
 
+Ares OS includes the **Ares Utility Toolbox (v1.0)**, a lightweight post-installation CLI wizard built to quickly set up your environment and perform essential system maintenance without manual searching.
+
+Key features listed in the menu include:
+* **Web Browsers:** Quick deployment of your preferred browser.
+* **Essential Apps:** Fast installation of daily utilities like 7-Zip, Notepad++, and more.
+* **Hardware Tools:** Instant setup for diagnostic utilities such as HWiNFO and CPU-Z.
+* **Media Players:** Easy installation of lightweight players like VLC and MPC-HC.
+* **Windows Libraries:** Deployment of essential runtime environments (DirectX, Visual C++ Redistributables, and .NET).
+* **System Cleanup:** One-click optimization to clear temporary files and flush DNS cache.
+
+<div align="center">
+  <img src="images/arestool.png" alt="Ares OS Utility Toolbox Screenshot" width="800">
+</div>
+
 ---
 
 ## Downloads
@@ -133,14 +147,6 @@ ARES OS is still in active development. No ISO files have been released.
 Stay informed via the [official website](https://ares-os-official.github.io/) and the [Discord community](https://discord.gg/ZFR22fshEZ).
 
 </div>
-
----
-
-## Wallpapers
-
-Official ARES OS 4K wallpapers are available on the website:
-
-[**View Wallpapers →**](https://ares-os-official.github.io/wallpapers.html)
 
 ---
 
@@ -180,7 +186,7 @@ Windows, DirectX, and related names are trademarks of Microsoft Corporation. Thi
 
 <div align="center">
 
-[**Eddyx12**](https://github.com/Eddyx12) — Eddyx12 ARES OS Developer & [**ildenteproibito**](https://github.com/ildenteproibito) — IL DENTE PROIBITO Tweaker by ARES OS
+[**Eddyx12**](https://github.com/Eddyx12) — Eddyx12 ARES OS Founder and Developer & [**ildenteproibito**](https://github.com/ildenteproibito) — IL DENTE PROIBITO Tweaker by ARES OS
 
 </div>
 
