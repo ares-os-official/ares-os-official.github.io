@@ -146,6 +146,13 @@ ARES OS is still in active development. No ISO files have been released.
 
 Stay informed via the [official website](https://ares-os-official.github.io/) and the [Discord community](https://discord.gg/ZFR22fshEZ).
 
+### Early ISO Access
+
+The official ARES OS newsletter will also be used to identify and select users who may receive early access to the ARES OS ISO before its public release.
+
+Newsletter registration does not automatically guarantee early ISO access. Eligible users will be selected by the ARES OS team and contacted using the email address provided during registration.
+
+
 </div>
 
 ---

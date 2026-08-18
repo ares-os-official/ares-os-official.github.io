@@ -29,14 +29,17 @@ This Privacy Policy applies only to the website at https://ares-os-official.gith
 
 ## 3. Categories of Personal Data
 
-Based on the verified site implementation, **no personal data is actively collected by the website through forms, accounts, or submissions** — there are no forms, no email fields, no login system, and no account creation anywhere on the site.
+The site includes a newsletter subscription form. **The only personal data actively collected is the email address a visitor voluntarily submits through that form.** There are no other forms, no login system, and no account creation anywhere on the site.
 
-No account identifiers, no email addresses, no authentication data, and no payment data are collected, because none of these mechanisms exist on the site as verified.
+No name, no authentication data, and no payment data are collected. The submitted email address is stored, together with a subscription timestamp and status, in a Cloudflare D1 database operated for this project. A hashed (non-reversible) form of the submitting IP address is temporarily stored separately, solely to limit automated abuse of the form, and is not linked to the stored email address.
+
+No self-service unsubscribe or data-deletion mechanism currently exists on the site. Until one is added, unsubscribe/deletion requests must be made through the contact channel described in Section 17.
 
 ## 4. Purposes and Legal Bases
 
-Given the absence of verified data collection beyond standard hosting logs and third-party resource loading, the applicable purpose is limited to:
+Based on the verified site implementation, the applicable purposes are:
 - **Operating and delivering the website** (loading pages, fonts, and scripts so the site displays correctly).
+- **Sending ARES OS project updates to newsletter subscribers**, based on the visitor's consent given by submitting the newsletter form.
 
 ## 5. Third-Party Services (verified from page source)
 
@@ -48,6 +51,8 @@ Users of these third-party services should refer to each provider's own privacy 
 - Google (Fonts): https://policies.google.com/privacy
 - Cloudflare (cdnjs): https://www.cloudflare.com/privacypolicy/
 - unpkg / npm: https://docs.npmjs.com/policies/privacy
+
+Separately, and only when the newsletter form is submitted, the entered email address and a hashed IP fragment are sent to a Cloudflare Workers/D1 backend operated for this project, for the purposes described in Section 3 and 4. This is a first-party data processor for the newsletter, not a resource loaded automatically by every visitor. See Cloudflare's privacy policy above for how Cloudflare itself processes data on its infrastructure.
 
 This project does not control, and is not responsible for, how these third parties process data on their own servers.
 
@@ -76,15 +81,15 @@ Cannot be assessed without knowing the controller's location (Section 1). Note, 
 
 ## 11. Data Retention
 
-No retention period is set or documented by this project for any data category. Server/technical logs are retained according to GitHub's own policies, not this project's.
+No retention period is set or documented by this project for most data categories. Server/technical logs are retained according to GitHub's own policies, not this project's. Newsletter subscriber email addresses are kept until the subscriber requests removal (see Section 17) or the project deletes them; no automatic expiry is currently implemented. The hashed IP fragment used for abuse prevention is short-lived operational data tied to the rate-limiting window described in Section 3.
 
 ## 12. Data Security
 
-No specific security measures beyond those inherent to GitHub Pages hosting (which serves the site over HTTPS) were found or can be claimed.
+Beyond the security inherent to GitHub Pages hosting (HTTPS), the newsletter's stored email addresses sit in a Cloudflare D1 database that is not publicly reachable; only an authenticated admin view can list subscribers, and the underlying subscription endpoint validates and sanitizes input server-side. No further security certification or audit is claimed.
 
 ## 13. User Rights
 
-Applicable rights (access, rectification, erasure, restriction, objection, portability, and the right to lodge a complaint with a supervisory authority) depend entirely on the jurisdiction of the controller and of the visitor, which cannot currently be established (see Section 1). No rights request mechanism (e.g., a contact email) currently exists on the site.
+Applicable rights (access, rectification, erasure, restriction, objection, portability, and the right to lodge a complaint with a supervisory authority) depend entirely on the jurisdiction of the controller and of the visitor, which cannot currently be established (see Section 1). No automated rights-request mechanism (e.g., a self-service unsubscribe link or contact email) currently exists on the site; requests, including from newsletter subscribers, must go through the contact channel in Section 17 until one is added.
 
 ## 14. Children's Privacy
 
@@ -104,7 +109,7 @@ No contact email or mechanism for privacy inquiries currently exists on the site
 
 ## 18. Effective Date / Last Updated
 
-08/10/2026
+08/11/2026 (updated to reflect the newsletter subscription feature)
 `;
 
 const legalDisclaimerText = `
@@ -252,9 +257,9 @@ function parseCyberMarkdown(text) {
 }
 
 function openLegalModal(type) {
-    const currentLang = localStorage.getItem('ares_lang') || 'it';
+    const currentLang = localStorage.getItem('ares_lang') || 'en'; // Impostato fallback 'en' invece di 'it'
     const langData = legalTexts[currentLang] || legalTexts['en'] || legalTexts['it'];
-    const modalData = langData[type] || legalTexts['it'][type];
+    const modalData = langData[type] || legalTexts['en'][type] || legalTexts['it'][type];
 
     document.getElementById('legal-title').innerText = modalData.title;
     document.getElementById('legal-text').innerHTML = parseCyberMarkdown(modalData.content);

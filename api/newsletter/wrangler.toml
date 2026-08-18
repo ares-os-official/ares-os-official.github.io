@@ -1,0 +1,17 @@
+name = "ares-newsletter-api"
+main = "src/worker.js"
+compatibility_date = "2025-01-01"
+
+# Public var (not secret) — the exact origin allowed to call /subscribe.
+[vars]
+ALLOWED_ORIGIN = "https://ares-os-official.github.io"
+
+# D1 database binding. Replace database_id with the ID printed by:
+#   wrangler d1 create ares-newsletter-db
+[[d1_databases]]
+binding = "DB"
+database_name = "ares-newsletter-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+# Secrets (ADMIN_USER, ADMIN_PASSWORD, IP_HASH_SALT) are NOT set here.
+# Set them with `wrangler secret put <NAME>` — see README.md.
